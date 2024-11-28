@@ -1,3 +1,22 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@keyframes animated-progress {
+  0% {
+    width: 0;
+    background-color: #fff;
+  }
+  10% {
+    width: 20%;
+    background-color: #fff;
+  }
+  50% {
+    width: 30%;
+    background-color: #fff;
+  }
+  100% {
+    width: 100%;
+    background-color: #fff;
+  }
+}
