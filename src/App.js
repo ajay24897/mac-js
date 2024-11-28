@@ -1,24 +1,30 @@
 import { useEffect, useState } from "react";
+import { Provider } from "react-redux";
 
 import "./App.css";
-import MacBootupScreen from "./components/MacBootupScreen";
-import HelloAnimation from "./screen/HelloAnimation/HelloAnimation";
+import MacBootupScreen from "./screen/MacBootupScreen/MacBootupScreen";
+import MacHomeScreen from "./screen/MacHomeScreen/MacHomeScreen";
+import { store } from "./redux/store";
 
 function App() {
-  const [showBootupSceen, setShowBootupScreen] = useState(false);
+  const [hasBootupFinished, setHasBootedFinesed] = useState(false);
 
   useEffect(() => {
-    const bootupScreenTimeout = setTimeout(() => {
-      setShowBootupScreen(false);
+    const bootupTime = setTimeout(() => {
+      setHasBootedFinesed(true);
     }, [3500]);
-    return () => clearTimeout(bootupScreenTimeout);
+
+    return () => clearInterval(bootupTime);
   }, []);
 
+  if (!hasBootupFinished) {
+    return <MacBootupScreen />;
+  }
+
   return (
-    <div className="flex-1 h-[100vh]">
-      {/* {showBootupSceen && <MacBootupScreen />} */}
-      {!showBootupSceen && <HelloAnimation />}
-    </div>
+    <Provider store={store}>
+      <MacHomeScreen />
+    </Provider>
   );
 }
 
