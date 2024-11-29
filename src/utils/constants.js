@@ -7,12 +7,12 @@ import layersLight from "../media/wallpaper/dark/layers.jpg";
 import mountainsLight from "../media/wallpaper/dark/layers.jpg";
 
 export const WALLPAPER_LIST = {
-  LIGHT: {
+  light: {
     desert: desertDark,
     layers: layersDark,
     mountains: mountainsDark,
   },
-  DARK: {
+  dark: {
     desert: desertLight,
     layers: layersLight,
     mountains: mountainsLight,

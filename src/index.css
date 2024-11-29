@@ -2,6 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
+* {
+  transition: background-image 0.3s ease-in-out;
+  max-height: 100vh;
+  overflow-y: scroll;
+  /* overflow-y: scroll;
+  box-sizing: border-box; */
+}
+
+body {
+  height: 100vh !important;
+}
+
 @keyframes animated-progress {
   0% {
     width: 0;

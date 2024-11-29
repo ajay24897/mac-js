@@ -2,6 +2,7 @@ import React from "react";
 import BlureBackground from "../../../components/BluredBackground";
 import HelloGetStarted from "./HelloGetStarted";
 import { useSelector } from "react-redux";
+import DarkLightMode from "./DarkLightMode";
 
 function OnBoarding() {
   const { currentStage } = useSelector(
@@ -14,12 +15,13 @@ function OnBoarding() {
     case "GET_STARTED":
       OnBoardingComponent = HelloGetStarted;
       break;
-    case "LANGUAGE_SELECTION":
-      OnBoardingComponent = BlureBackground;
+    case "MODE_SELECTION":
+      OnBoardingComponent = DarkLightMode;
       break;
     default:
-      OnBoardingComponent = <></>;
+      OnBoardingComponent = () => <></>;
   }
+
   return (
     <BlureBackground>
       <OnBoardingComponent />

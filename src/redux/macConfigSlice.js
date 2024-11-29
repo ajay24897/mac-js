@@ -7,7 +7,7 @@ const initialState = {
     selected: "layers",
   },
   onBordingInfo: {
-    stageList: ["GET_STARTED", "LANGUAGE_SELECTION"],
+    stageList: ["GET_STARTED", "MODE_SELECTION", "COMPLETE"],
     index: 0,
     currentStage: "GET_STARTED",
   },
@@ -18,16 +18,26 @@ export const macConfigSlice = createSlice({
   initialState,
   reducers: {
     setBordingStage: (state, action) => {
+      console.log(
+        action.payload,
+        state.onBordingInfo.stageList[state.onBordingInfo.index]
+      );
       if (action.payload === "next") {
         state.onBordingInfo.index += 1;
         state.onBordingInfo.currentStage =
           state.onBordingInfo.stageList[state.onBordingInfo.index];
+      }
+      console.log(state.onBordingInfo.currentStage);
+    },
+    setMode: (state, action) => {
+      if (action.payload === "dark" || action.payload === "light") {
+        state.mode = action.payload;
       }
     },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { setBordingStage } = macConfigSlice.actions;
+export const { setBordingStage, setMode } = macConfigSlice.actions;
 
 export default macConfigSlice.reducer;
