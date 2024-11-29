@@ -7,13 +7,14 @@ import OnBoarding from "./OnBoarding/OnBoarding";
 function MacHomeScreen() {
   const {
     mode,
+    wallpaperInfo: { selected },
     onBordingInfo: { currentStage },
   } = useSelector((state) => state.macConfig);
 
   return (
     <div
       className={`flex-1 h-[100vh] overflow-y-hidden bg-cover ${mode}`}
-      style={{ backgroundImage: `url(${WALLPAPER_LIST[mode].layers})` }}
+      style={{ backgroundImage: `url(${WALLPAPER_LIST[mode][selected]})` }}
     >
       {currentStage !== "COMPLETE" && <OnBoarding />}
     </div>
