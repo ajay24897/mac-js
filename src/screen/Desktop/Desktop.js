@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import { WALLPAPER_LIST } from "../../utils/constants";
 import OnBoarding from "./OnBoarding/OnBoarding";
 
-function MacHomeScreen() {
+function Desktop() {
   const {
     mode,
     wallpaperInfo: { selected },
@@ -21,4 +21,4 @@ function MacHomeScreen() {
   );
 }
 
-export default MacHomeScreen;
+export default Desktop;

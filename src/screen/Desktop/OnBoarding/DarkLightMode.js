@@ -55,24 +55,37 @@ function TextContent() {
   );
 }
 
+const COMMON_CARD_CLASS =
+  "h-52 max-w-60 flex justify-center items-center cursor-pointer rounded-lg ";
+
 function LightModeCard({ onModeSelection }) {
   const hasDarkMode = useDarkMode();
 
+  function lightModeSelection() {
+    onModeSelection("light");
+  }
+
   return (
-    <div className="flex-col" onClick={() => onModeSelection("light")}>
+    <div>
       <div
-        className={`h-52 max-w-60 bg-gradient-to-b from-indigo-300 via-orange-300 to-pink-500 rounded-lg  flex justify-center items-center " +
+        className={`bg-gradient-to-b from-indigo-300 via-orange-300 to-pink-500  ${COMMON_CARD_CLASS}
         ${!hasDarkMode ? "border-4 border-sky-600" : ""}
       `}
+        onClick={lightModeSelection}
       >
         <div className="bg-slate-100 rounded-md m-2 flex flex-col shadow-md">
           <div className="bg-gray-200 rounded-t-md h-4 w-full"></div>
-          <p className="text-slate-800 text-[0.6rem] my-4">
+          <p className="text-slate-800 text-[0.6rem] my-4 select-none">
             {STRING_EN.LOREM_IPSUM}
           </p>
         </div>
       </div>
-      <Text className="text-sm mt-2">Light</Text>
+      <Text
+        className="text-sm mt-2 inline cursor-pointer"
+        onClick={lightModeSelection}
+      >
+        Light
+      </Text>
     </div>
   );
 }
@@ -80,21 +93,31 @@ function LightModeCard({ onModeSelection }) {
 function DarkModeCard({ onModeSelection }) {
   const hasDarkMode = useDarkMode();
 
+  function DarkModeSelection() {
+    onModeSelection("dark");
+  }
+
   return (
-    <div className="flex-col" onClick={() => onModeSelection("dark")}>
+    <div>
       <div
-        className={`h-52 max-w-60 bg-gradient-to-b from-indigo-700  via-orange-600 to-pink-600 rounded-lg border-2 flex justify-center items-center flex-1" +
+        className={`bg-gradient-to-b from-indigo-700  via-orange-600 to-pink-600 ${COMMON_CARD_CLASS}
         ${hasDarkMode ? "border-4 border-sky-600" : ""}
       `}
+        onClick={DarkModeSelection}
       >
         <div className="bg-slate-800 rounded-md m-2 flex flex-col shadow-md">
           <div className="bg-gray-700 rounded-t-md h-4 w-full"></div>
-          <p className="text-slate-300 text-[0.6rem] my-4">
+          <p className="text-slate-300 text-[0.6rem] my-4 select-none">
             {STRING_EN.LOREM_IPSUM}
           </p>
         </div>
       </div>
-      <Text className="text-sm mt-2">Dark</Text>
+      <Text
+        className="text-sm mt-2 cursor-pointer inline"
+        onClick={DarkModeSelection}
+      >
+        Dark
+      </Text>
     </div>
   );
 }

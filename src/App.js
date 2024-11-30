@@ -2,8 +2,8 @@ import { useEffect, useState } from "react";
 import { Provider } from "react-redux";
 
 import "./App.css";
-import MacBootupScreen from "./screen/MacBootupScreen/MacBootupScreen";
-import MacHomeScreen from "./screen/MacHomeScreen/MacHomeScreen";
+import BootupScreen from "./screen/BootupScreen/BootupScreen";
+import Desktop from "./screen/Desktop/Desktop";
 import { store } from "./redux/store";
 
 function App() {
@@ -18,12 +18,12 @@ function App() {
   }, []);
 
   if (!hasBootupFinished) {
-    return <MacBootupScreen />;
+    return <BootupScreen />;
   }
 
   return (
     <Provider store={store}>
-      <MacHomeScreen />
+      <Desktop />
     </Provider>
   );
 }
