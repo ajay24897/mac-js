@@ -17,7 +17,7 @@ const Text = ({ className = "", style = {}, variant = "p", ...props }) => {
 };
 
 Text.defaultProps = {
-  className: "text-8xl",
+  className: "text-sm",
   children: "",
 };
 

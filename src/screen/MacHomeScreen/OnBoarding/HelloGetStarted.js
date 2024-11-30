@@ -17,10 +17,13 @@ function HelloGetStarted() {
     <div className="flex flex-1 flex-col h-full justify-center items-center ">
       <Lottie animationData={HelloAnimationJson} className=" invert" />
       <Icon className="text-2xl">
-        <PiArrowCircleRight onClick={getStartClick} />
+        <PiArrowCircleRight
+          onClick={getStartClick}
+          className="!text-slate-200"
+        />
       </Icon>
 
-      <Text className="text-sm  mt-1">Get Started</Text>
+      <Text className="text-sm mt-1 !text-slate-200">Get Started</Text>
     </div>
   );
 }
