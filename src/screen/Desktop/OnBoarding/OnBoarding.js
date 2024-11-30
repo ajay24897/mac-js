@@ -1,5 +1,5 @@
 import React from "react";
-import BlureBackground from "../../../components/BluredBackground";
+import BlureBackground from "../../../components/common/BluredBackground";
 import HelloGetStarted from "./HelloGetStarted";
 import { useSelector } from "react-redux";
 import DarkLightMode from "./DarkLightMode";

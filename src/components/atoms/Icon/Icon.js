@@ -5,7 +5,11 @@ import { DESIGN } from "../../../utils/colors";
 
 function Icon(props) {
   const { className, children } = props;
-  return <div className={`${DESIGN.TEXT}  ${className}`}>{children}</div>;
+  return (
+    <div className={`${DESIGN.TEXT}  ${className} cursor-pointer`}>
+      {children}
+    </div>
+  );
 }
 
 Icon.defaultProps = {

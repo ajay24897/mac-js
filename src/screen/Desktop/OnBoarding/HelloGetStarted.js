@@ -4,8 +4,7 @@ import Lottie from "lottie-react";
 import { PiArrowCircleRight } from "react-icons/pi";
 import { useDispatch } from "react-redux";
 import { setBordingStage } from "../../../redux/macConfigSlice";
-import Icon from "../../../components/atoms/Icon/Icon";
-import Text from "../../../components/atoms/Text/Text";
+import { Icon, Text } from "../../../components/atoms";
 
 function HelloGetStarted() {
   const dispatch = useDispatch();
@@ -23,7 +22,9 @@ function HelloGetStarted() {
         />
       </Icon>
 
-      <Text className="text-sm mt-1 !text-slate-200">Get Started</Text>
+      <Text className="text-sm mt-1 !text-slate-200 cursor-pointer">
+        Get Started
+      </Text>
     </div>
   );
 }

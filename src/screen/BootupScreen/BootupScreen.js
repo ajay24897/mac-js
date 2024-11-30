@@ -1,8 +1,8 @@
 import React from "react";
 import { FaApple } from "react-icons/fa";
 
-import ProgressBar from "../../components/ProgressBar";
-import Icon from "../../components/atoms/Icon/Icon";
+import ProgressBar from "../../components/common/ProgressBar";
+import { Icon } from "../../components/atoms";
 
 function MacBootupScreen() {
   return (
