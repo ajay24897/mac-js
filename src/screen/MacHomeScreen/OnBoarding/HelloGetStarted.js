@@ -4,6 +4,8 @@ import Lottie from "lottie-react";
 import { PiArrowCircleRight } from "react-icons/pi";
 import { useDispatch } from "react-redux";
 import { setBordingStage } from "../../../redux/macConfigSlice";
+import Icon from "../../../components/atoms/Icon/Icon";
+import Text from "../../../components/atoms/Text/Text";
 
 function HelloGetStarted() {
   const dispatch = useDispatch();
@@ -14,11 +16,11 @@ function HelloGetStarted() {
   return (
     <div className="flex flex-1 flex-col h-full justify-center items-center ">
       <Lottie animationData={HelloAnimationJson} className=" invert" />
-      <PiArrowCircleRight
-        className="text-2xl text-white"
-        onClick={getStartClick}
-      />
-      <p className="text-sm text-white mt-1 select-none">Get Started</p>
+      <Icon className="text-2xl">
+        <PiArrowCircleRight onClick={getStartClick} />
+      </Icon>
+
+      <Text className="text-sm  mt-1">Get Started</Text>
     </div>
   );
 }

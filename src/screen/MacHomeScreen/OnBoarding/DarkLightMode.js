@@ -6,6 +6,7 @@ import { setBordingStage, setMode } from "../../../redux/macConfigSlice";
 import { STRING_EN } from "../../../utils/strings";
 import Button from "../../../components/atoms/Button.js/Button";
 import useDarkMode from "../../../hooks/useDarkMode";
+import { DESIGN } from "../../../utils/colors";
 
 function DarkLightMode() {
   const dispatch = useDispatch();
@@ -16,14 +17,17 @@ function DarkLightMode() {
 
   return (
     <div className="flex flex-col flex-1 justify-center items-center ">
-      <main className="flex flex-col  w-[70%] max-h-[80%] sm:overflow-scroll  bg-slate-100 dark:bg-slate-800  text-center rounded-2xl shadow-md">
+      <main
+        className={`flex flex-col  w-[70%] max-h-[80%] sm:overflow-scroll text-center rounded-2xl shadow-md ${DESIGN.BG_PRIMARY}`}
+      >
         <TextContent />
-
         <div className="flex flex-1 flex-row flex-wrap justify-evenly m-10 mx-2">
           <LightModeCard onModeSelection={modeSelection} />
           <DarkModeCard onModeSelection={modeSelection} />
         </div>
-        <div className="bg-gray-200 dark:bg-gray-700 w-full py-2 px-6 flex flex-row-reverse">
+        <div
+          className={`w-full py-2 px-6 flex flex-row-reverse ${DESIGN.BG_SECONDARY}`}
+        >
           <Button
             title={"Done"}
             onClick={() => dispatch(setBordingStage("next"))}
@@ -55,7 +59,7 @@ function LightModeCard({ onModeSelection }) {
   const hasDarkMode = useDarkMode();
 
   return (
-    <div className="flex-col " onClick={() => onModeSelection("light")}>
+    <div className="flex-col" onClick={() => onModeSelection("light")}>
       <div
         className={`h-52 max-w-60 bg-gradient-to-b from-indigo-300 via-orange-300 to-pink-500 rounded-lg  flex justify-center items-center " +
         ${!hasDarkMode ? "border-4 border-sky-600" : ""}
@@ -63,7 +67,7 @@ function LightModeCard({ onModeSelection }) {
       >
         <div className="bg-slate-100 rounded-md m-2 flex flex-col shadow-md">
           <div className="bg-gray-200 rounded-t-md h-4 w-full"></div>
-          <p className="text-gray-700 text-[0.6rem] my-4">
+          <p className="text-slate-800 text-[0.6rem] my-4">
             {STRING_EN.LOREM_IPSUM}
           </p>
         </div>
@@ -85,7 +89,7 @@ function DarkModeCard({ onModeSelection }) {
       >
         <div className="bg-slate-800 rounded-md m-2 flex flex-col shadow-md">
           <div className="bg-gray-700 rounded-t-md h-4 w-full"></div>
-          <p className="text-gray-300 text-[0.6rem] my-4">
+          <p className="text-slate-300 text-[0.6rem] my-4">
             {STRING_EN.LOREM_IPSUM}
           </p>
         </div>
