@@ -1,10 +1,10 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 
-import Text from "../../../components/Text";
+import Text from "../../../components/atoms/Text/Text";
 import { setBordingStage, setMode } from "../../../redux/macConfigSlice";
 import { STRING_EN } from "../../../utils/strings";
-import Button from "../../../components/Button";
+import Button from "../../../components/atoms/Button.js/Button";
 import useDarkMode from "../../../hooks/useDarkMode";
 
 function DarkLightMode() {
