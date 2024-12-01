@@ -22,7 +22,10 @@ function HelloGetStarted() {
         />
       </Icon>
 
-      <Text className="text-sm mt-1 !text-slate-200 cursor-pointer">
+      <Text
+        className="text-sm mt-1 !text-slate-200 cursor-pointer"
+        onClick={getStartClick}
+      >
         Get Started
       </Text>
     </div>
