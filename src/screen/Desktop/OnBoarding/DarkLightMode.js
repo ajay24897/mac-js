@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 
-import { setBordingStage, setMode } from "../../../redux/macConfigSlice";
+import { setBordingStage, setMode } from "../../../redux/macSlice";
 import { STRING_EN } from "../../../utils/strings";
 import useDarkMode from "../../../hooks/useDarkMode";
 import { DESIGN } from "../../../utils/colors";

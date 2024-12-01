@@ -1,8 +1,8 @@
 import { configureStore } from "@reduxjs/toolkit";
-import macConfigSlice from "./macConfigSlice";
+import macSlice from "./macSlice";
 
 export const store = configureStore({
   reducer: {
-    macConfig: macConfigSlice,
+    mac: macSlice,
   },
 });

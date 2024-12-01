@@ -1,31 +1,26 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { ON_BORDING_STATE_LIST } from "../utils/constants";
 
 const initialState = {
   mode: "light", //dark //auto
-  wallpaperInfo: {
-    options: ["desert", "layers", "mountains"],
+  wallpaperState: {
     selectedWallpaper: "layers",
   },
   onBordingState: {
-    stageList: ["GET_STARTED", "MODE_SELECTION", "COMPLETE"],
     index: 0,
     onBordingStage: "GET_STARTED",
   },
 };
 
-export const macConfigSlice = createSlice({
+export const macSlice = createSlice({
   name: "counter",
   initialState,
   reducers: {
     setBordingStage: (state, action) => {
-      console.log(
-        action.payload,
-        state.onBordingState.stageList[state.onBordingState.index]
-      );
       if (action.payload === "next") {
         state.onBordingState.index += 1;
         state.onBordingState.onBordingStage =
-          state.onBordingState.stageList[state.onBordingState.index];
+          ON_BORDING_STATE_LIST[state.onBordingState.index];
       }
       console.log(state.onBordingState.onBordingStage);
     },
@@ -38,6 +33,6 @@ export const macConfigSlice = createSlice({
 });
 
 // Action creators are generated for each case reducer function
-export const { setBordingStage, setMode } = macConfigSlice.actions;
+export const { setBordingStage, setMode } = macSlice.actions;
 
-export default macConfigSlice.reducer;
+export default macSlice.reducer;

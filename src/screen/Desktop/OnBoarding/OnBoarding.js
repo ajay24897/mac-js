@@ -5,9 +5,7 @@ import { useSelector } from "react-redux";
 import DarkLightMode from "./DarkLightMode";
 
 function OnBoarding() {
-  const { onBordingStage } = useSelector(
-    (state) => state.macConfig.onBordingState
-  );
+  const { onBordingStage } = useSelector((state) => state.mac.onBordingState);
 
   let OnBoardingComponent;
 

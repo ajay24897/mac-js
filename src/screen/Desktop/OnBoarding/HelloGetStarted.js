@@ -3,7 +3,7 @@ import HelloAnimationJson from "../../../media/animation/hello.json";
 import Lottie from "lottie-react";
 import { PiArrowCircleRight } from "react-icons/pi";
 import { useDispatch } from "react-redux";
-import { setBordingStage } from "../../../redux/macConfigSlice";
+import { setBordingStage } from "../../../redux/macSlice";
 import { Icon, Text } from "../../../components/atoms";
 
 function HelloGetStarted() {
