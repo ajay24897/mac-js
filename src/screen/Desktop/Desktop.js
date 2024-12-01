@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 
 import { WALLPAPER_LIST } from "../../utils/constants";
 import OnBoarding from "./OnBoarding/OnBoarding";
+import Menubar from "../../components/common/Menubar";
 
 function Desktop() {
   const {
@@ -13,10 +14,15 @@ function Desktop() {
 
   return (
     <div
-      className={`flex-1 h-[100vh] overflow-y-hidden bg-cover ${mode}`}
+      className={`flex-1 h-[100vh] min-w-[100vw] overflow-y-hidden bg-cover ${mode}`}
       style={{ backgroundImage: `url(${WALLPAPER_LIST[mode][selected]})` }}
     >
       {currentStage !== "COMPLETE" && <OnBoarding />}
+      {currentStage == "COMPLETE" && (
+        <>
+          <Menubar />
+        </>
+      )}
     </div>
   );
 }
