@@ -3,22 +3,24 @@ import { useSelector } from "react-redux";
 
 import { WALLPAPER_LIST } from "../../utils/constants";
 import OnBoarding from "./OnBoarding/OnBoarding";
-import Menubar from "../../components/common/Menubar";
+import Menubar from "../../components/common/Menubar/Menubar";
 
 function Desktop() {
   const {
     mode,
-    wallpaperInfo: { selected },
-    onBordingInfo: { currentStage },
+    wallpaperInfo: { selectedWallpaper },
+    onBordingState: { onBordingStage },
   } = useSelector((state) => state.macConfig);
 
   return (
     <div
       className={`flex-1 h-[100vh] min-w-[100vw] overflow-y-hidden bg-cover ${mode}`}
-      style={{ backgroundImage: `url(${WALLPAPER_LIST[mode][selected]})` }}
+      style={{
+        backgroundImage: `url(${WALLPAPER_LIST[mode][selectedWallpaper]})`,
+      }}
     >
-      {currentStage !== "COMPLETE" && <OnBoarding />}
-      {currentStage == "COMPLETE" && (
+      {onBordingStage !== "COMPLETE" && <OnBoarding />}
+      {onBordingStage === "COMPLETE" && (
         <>
           <Menubar />
         </>

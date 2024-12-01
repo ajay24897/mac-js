@@ -13,7 +13,7 @@ function Icon(props) {
 }
 
 Icon.defaultProps = {
-  className: "text-8xl",
+  className: "text-lg",
   children: <FaApple />,
 };
 

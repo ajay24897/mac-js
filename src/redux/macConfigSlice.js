@@ -4,12 +4,12 @@ const initialState = {
   mode: "light", //dark //auto
   wallpaperInfo: {
     options: ["desert", "layers", "mountains"],
-    selected: "layers",
+    selectedWallpaper: "layers",
   },
-  onBordingInfo: {
+  onBordingState: {
     stageList: ["GET_STARTED", "MODE_SELECTION", "COMPLETE"],
     index: 0,
-    currentStage: "GET_STARTED",
+    onBordingStage: "GET_STARTED",
   },
 };
 
@@ -20,14 +20,14 @@ export const macConfigSlice = createSlice({
     setBordingStage: (state, action) => {
       console.log(
         action.payload,
-        state.onBordingInfo.stageList[state.onBordingInfo.index]
+        state.onBordingState.stageList[state.onBordingState.index]
       );
       if (action.payload === "next") {
-        state.onBordingInfo.index += 1;
-        state.onBordingInfo.currentStage =
-          state.onBordingInfo.stageList[state.onBordingInfo.index];
+        state.onBordingState.index += 1;
+        state.onBordingState.onBordingStage =
+          state.onBordingState.stageList[state.onBordingState.index];
       }
-      console.log(state.onBordingInfo.currentStage);
+      console.log(state.onBordingState.onBordingStage);
     },
     setMode: (state, action) => {
       if (action.payload === "dark" || action.payload === "light") {

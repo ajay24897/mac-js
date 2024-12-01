@@ -46,7 +46,8 @@ function MacJS() {
   return (
     <div
       onScroll={handleScroll}
-      className="flex flex-row overflow-x-scroll mac-container"
+      id={"mac-container"}
+      className="flex flex-row overflow-x-scroll"
       ref={container}
     >
       <Desktop />
