@@ -13,7 +13,7 @@ const initialState = {
 };
 
 export const macSlice = createSlice({
-  name: "counter",
+  name: "macSlice",
   initialState,
   reducers: {
     setBordingStage: (state, action) => {

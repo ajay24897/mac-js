@@ -1,27 +1,50 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { FaApple } from "react-icons/fa";
 import { Icon, Text } from "../../atoms";
 import { IoIosSwitch } from "react-icons/io";
 import { IoBatteryFullOutline, IoWifi } from "react-icons/io5";
+import { getFormattedDate, getMacOSTime } from "../../../utils/functions";
+import { setShowMenubar } from "../../../redux/screenSlice";
+import { useDispatch, useSelector } from "react-redux";
 
 function Menubar(props) {
-  const { className, children } = props;
+  const { className = "", children, fixedMenubar = false } = props;
+  const {
+    menubarState: { showMenubar },
+  } = useSelector((state) => state.screen);
+  const dispatch = useDispatch();
+  const animatedClass =
+    fixedMenubar && showMenubar ? "translate-y-0" : "-translate-y-6";
 
-  const [a, b] = useState(false);
+  console.log(animatedClass);
 
   useEffect(() => {
-    setTimeout(() => b(true), 5000);
-  }, []);
+    const element = document.getElementById("mac-container");
+    if (element) {
+      element.addEventListener("mousemove", handleMouseMove);
+    } else {
+      console.error("mac-container not found");
+    }
 
-  useEffect(() => {
-    let a = document.getElementById("mac-container");
-    console.log(a);
-  }, []);
+    return () => {
+      if (element) {
+        element.removeEventListener("mousemove", handleMouseMove);
+      }
+    };
+  }, []); // Empty dependency array ensures the effect runs once
+
+  const handleMouseMove = (event) => {
+    if (event.clientY <= 24 || fixedMenubar) {
+      dispatch(setShowMenubar(true));
+    } else {
+      dispatch(setShowMenubar(false));
+    }
+    console.log(`Cursor Position: X=${event.clientX}, Y=${event.clientY}`);
+  };
+
   return (
     <div
-      className={`h-6 w-100vw  flex flex-row items-center bg-slate-100/50 dark:bg-slate-950/50 px-2 ${className} ${
-        a ? "-translate-y-6" : ""
-      } transition-transform duration-500`}
+      className={`h-6 w-full flex flex-row items-center bg-slate-100/50 dark:bg-slate-950/50 px-2 ${className} ${animatedClass} transition-transform duration-500`}
     >
       <div className="flex flex-row justify-start">
         <Icon>
@@ -40,46 +63,6 @@ function Menubar(props) {
 }
 
 function NotificationCenter() {
-  const getMacOSTime = () => {
-    const now = new Date();
-    const formatter = new Intl.DateTimeFormat("en-US", {
-      hour: "numeric",
-      minute: "numeric",
-      hour12: true, // Ensures AM/PM formatting
-    });
-    return formatter.format(now);
-  };
-
-  console.log(getMacOSTime());
-
-  const getFormattedDate = () => {
-    const now = new Date();
-
-    const weekdays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-    const months = [
-      "Jan",
-      "Feb",
-      "Mar",
-      "Apr",
-      "May",
-      "Jun",
-      "Jul",
-      "Aug",
-      "Sep",
-      "Oct",
-      "Nov",
-      "Dec",
-    ];
-
-    const weekday = weekdays[now.getDay()]; // Get weekday name (e.g., "Sun")
-    const day = now.getDate(); // Get day of the month (e.g., "1")
-    const month = months[now.getMonth()]; // Get month name (e.g., "Dec")
-
-    return `${weekday} ${day} ${month}`;
-  };
-
-  console.log(getFormattedDate());
-
   return (
     <Text className="font-medium text-sm">
       {getFormattedDate()} {getMacOSTime()}
