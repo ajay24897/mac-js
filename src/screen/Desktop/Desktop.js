@@ -1,55 +1,25 @@
 import React, { useRef } from "react";
 
 import Home from "./Home/Home";
+import { useSelector } from "react-redux";
+import OnBoarding from "./OnBoarding/OnBoarding";
+import { WALLPAPER_IMG_LIST } from "../../utils/constants";
 
 function Desktop() {
-  let container = useRef();
-  const timer = useRef();
-  const hasScrolledImplicit = useRef(false);
-
-  const handleScrollStop = (scrollLeft, clientWidth) => {
-    const scrolledAmount = scrollLeft / clientWidth;
-
-    const nextSection =
-      scrolledAmount > Math.floor(scrolledAmount) + 0.5
-        ? Math.ceil(scrolledAmount)
-        : Math.floor(scrolledAmount);
-
-    // Scroll to the calculated section
-    container.current.scrollTo({
-      left: clientWidth * nextSection,
-      behavior: "smooth",
-    });
-
-    hasScrolledImplicit.current = true;
-  };
-
-  const handleScroll = (event) => {
-    const scrollLeft = event.target.scrollLeft;
-    const clientWidth = event.target.clientWidth;
-
-    if (hasScrolledImplicit.current) {
-      hasScrolledImplicit.current = false;
-      return;
-    }
-
-    if (timer.current) {
-      clearTimeout(timer.current);
-    }
-
-    timer.current = setTimeout(() => {
-      handleScrollStop(scrollLeft, clientWidth);
-    }, 200);
-  };
+  const {
+    mode,
+    wallpaperState: { selectedWallpaper },
+    onBordingState: { onBordingStage },
+  } = useSelector((state) => state.mac);
 
   return (
     <div
-      id={"mac-container"}
-      ref={container}
       className={`flex flex-1 h-[100vh] min-w-[100vw]  overflow-x-scroll overflow-y-hidden bg-cover`}
-      onScroll={handleScroll}
+      style={{
+        backgroundImage: `url(${WALLPAPER_IMG_LIST[mode][selectedWallpaper]})`,
+      }}
     >
-      <Home />
+      {onBordingStage === "COMPLETE" ? <Home /> : <OnBoarding />}
     </div>
   );
 }
