@@ -1,6 +1,8 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import Desktop from "./Desktop/Desktop";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { setShowMenubar } from "../redux/screenSlice";
+import Menubar from "../components/common/Menubar/Menubar";
 
 function MacJS() {
   const { mode } = useSelector((state) => state.mac);
@@ -8,6 +10,31 @@ function MacJS() {
   let container = useRef();
   const timer = useRef();
   const hasScrolledImplicit = useRef(false);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const element = document.getElementById("mac-container");
+    if (element) {
+      element.addEventListener("mousemove", handleMouseMove);
+    } else {
+      console.error("mac-container not found");
+    }
+
+    return () => {
+      if (element) {
+        element.removeEventListener("mousemove", handleMouseMove);
+      }
+    };
+  }, []); // Empty dependency array ensures the effect runs once
+
+  const handleMouseMove = (event) => {
+    if (event.clientY <= 24) {
+      dispatch(setShowMenubar(true));
+    } else {
+      dispatch(setShowMenubar(false));
+    }
+    console.log(`Cursor Position: X=${event.clientX}, Y=${event.clientY}`);
+  };
 
   const handleScrollStop = (scrollLeft, clientWidth) => {
     const scrolledAmount = scrollLeft / clientWidth;
@@ -52,6 +79,10 @@ function MacJS() {
       ref={container}
     >
       <Desktop />
+      <div className="min-w-[100vw]">
+        <Menubar fixedMenubar={false} />
+        edede
+      </div>
     </div>
   );
 }

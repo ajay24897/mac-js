@@ -6,7 +6,7 @@ import { DESIGN } from "../../../utils/colors";
 function Icon(props) {
   const { className, children } = props;
   return (
-    <div className={`${DESIGN.TEXT}  ${className} cursor-pointer`}>
+    <div className={`${DESIGN.TEXT} ${className} cursor-pointer`}>
       {children}
     </div>
   );
