@@ -13,17 +13,17 @@ function Menubar(props) {
     menubarState: { showMenubar },
   } = useSelector((state) => state.screen);
   const animatedClass = fixedMenubar
-    ? "translate-y-0 h6"
+    ? "translate-y-0"
     : showMenubar
     ? "translate-y-0"
-    : "-translate-y-6 !h-0";
+    : "-translate-y-6 !h-0 !py-0";
 
   return (
     <div
-      className={`w-full flex flex-row items-center bg-slate-100/50 dark:bg-slate-900 px-2 ${className} ${animatedClass} transition-transform duration-500`}
+      className={`w-full flex flex-row items-center bg-slate-100/50 dark:bg-slate-900 px-2 ${className} ${animatedClass} transition-transform duration-500 py-[2px]`}
     >
       <div className="flex flex-row justify-start">
-        <Icon>
+        <Icon className={"pr-2 text-xl"}>
           <FaApple />
         </Icon>
 
@@ -40,7 +40,7 @@ function Menubar(props) {
 
 function NotificationCenter() {
   return (
-    <Text className={"font-medium text-sm"}>
+    <Text className={"font-medium text-sm ml-2"}>
       {getFormattedDate()} {getMacOSTime()}
     </Text>
   );
@@ -48,7 +48,7 @@ function NotificationCenter() {
 
 function ControlCentre() {
   return (
-    <Icon className={`px-2 ${DESIGN.MENU_ICON_HOVER}`}>
+    <Icon className={`px-2 ${DESIGN.MENU_ICON_HOVER} text-xl`}>
       <IoIosSwitch />
     </Icon>
   );
@@ -57,10 +57,10 @@ function ControlCentre() {
 function StatusMenu() {
   return (
     <div className="flex flex-row items-center">
-      <Icon className={`px-2 ${DESIGN.MENU_ICON_HOVER}`}>
+      <Icon className={`px-2 ${DESIGN.MENU_ICON_HOVER} text-xl`}>
         <IoWifi />
       </Icon>
-      <Icon className={`px-2 ${DESIGN.MENU_ICON_HOVER}`}>
+      <Icon className={`px-2 ${DESIGN.MENU_ICON_HOVER} text-xl`}>
         <IoBatteryFullOutline />
       </Icon>
     </div>

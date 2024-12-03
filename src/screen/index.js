@@ -3,6 +3,7 @@ import Desktop from "./Desktop/Desktop";
 import { useDispatch, useSelector } from "react-redux";
 import { setShowMenubar } from "../redux/screenSlice";
 import Menubar from "../components/common/Menubar/Menubar";
+import { Text } from "../components/atoms";
 
 function MacJS() {
   const { mode } = useSelector((state) => state.mac);
@@ -81,7 +82,7 @@ function MacJS() {
       <Desktop />
       <div className="min-w-[100vw]">
         <Menubar fixedMenubar={false} />
-        edede
+        <Text>edede</Text>
       </div>
     </div>
   );
