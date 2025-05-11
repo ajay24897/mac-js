@@ -29,7 +29,7 @@ function DarkLightMode() {
         >
           <Button
             title={"Done"}
-            onClick={() => dispatch(setBordingStage("next"))}
+            onClick={() => dispatch(setBordingStage("COMPLETE"))}
           />
         </div>
       </main>

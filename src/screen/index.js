@@ -4,6 +4,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { setShowMenubar } from "../redux/screenSlice";
 import Menubar from "../components/common/Menubar/Menubar";
 import { Text } from "../components/atoms";
+import Dock from "../components/common/Dock/Dock";
+import { ON_BORDING_STATE_LIST } from "../utils/constants";
 
 function MacJS() {
   const { mode } = useSelector((state) => state.mac);
@@ -72,6 +74,10 @@ function MacJS() {
     }, 200);
   };
 
+  const {
+    onBordingState: { onBordingStage },
+  } = useSelector((state) => state.mac);
+
   return (
     <div
       className={`flex flex-1 h-[100vh] min-w-[100vw]  overflow-x-scroll overflow-y-hidden bg-cover ${mode}`}
@@ -83,6 +89,7 @@ function MacJS() {
       <div className="min-w-[100vw]">
         <Menubar fixedMenubar={false} />
         <Text>edede</Text>
+        {onBordingStage === "COMPLETE" && <Dock />}
       </div>
     </div>
   );

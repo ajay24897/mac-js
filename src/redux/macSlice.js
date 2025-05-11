@@ -17,11 +17,10 @@ export const macSlice = createSlice({
   initialState,
   reducers: {
     setBordingStage: (state, action) => {
-      if (action.payload === "next") {
-        state.onBordingState.index += 1;
-        state.onBordingState.onBordingStage =
-          ON_BORDING_STATE_LIST[state.onBordingState.index];
-      }
+      state.onBordingState.index += 1;
+      state.onBordingState.onBordingStage =
+        ON_BORDING_STATE_LIST[state.onBordingState.index];
+
       console.log(state.onBordingState.onBordingStage);
     },
     setMode: (state, action) => {

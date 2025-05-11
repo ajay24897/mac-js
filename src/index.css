@@ -32,3 +32,21 @@ body {
     background-color: #fff;
   }
 }
+.bounce {
+  animation: bounce 3s ease-in-out forwards;
+  z-index: 1000;
+  /* display: flex; */
+}
+@keyframes bounce {
+  15%,
+  50%,
+  85% {
+    transform: translateY(-20px);
+  }
+  0%,
+  33%,
+  66%,
+  100% {
+    transform: translateY(0);
+  }
+}
